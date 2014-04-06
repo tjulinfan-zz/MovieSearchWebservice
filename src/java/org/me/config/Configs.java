@@ -18,4 +18,6 @@ public class Configs {
     public static final String API_KEY_VALUE = "73fe138b382e90fbdcbb53d875711bdd";
     
     public static final String QUERY_LABEL = "query";
+    
+    public static final String POSTER_BASE_URL_W185 = "http://image.tmdb.org/t/p/w185";
 }

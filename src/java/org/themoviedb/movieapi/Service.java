@@ -25,6 +25,7 @@ public class Service {
 
     private static final String GET_URL = Configs.API_BASE_URL + "/movie/";
     
+    //Getting movie information by using TMDId
     public static Movie getMovie(Integer id) {
         String getUrl = GET_URL + id
                 + "?"+ Configs.API_KEY_LABEL + "=" + Configs.API_KEY_VALUE;
@@ -33,7 +34,7 @@ public class Service {
             URLConnection conn = getURL.openConnection();
             
             Gson gson = new Gson();
-            Movie movie = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream())), Movie.class);
+            Movie movie = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")), Movie.class);
             return movie;
         } catch (MalformedURLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "URL invalid", ex);
