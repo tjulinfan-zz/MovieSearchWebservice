@@ -32,6 +32,7 @@ public class Service {
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();
+            conn.setConnectTimeout(Configs.TIME_OUT_MS);
             
             Gson gson = new Gson();
             Movie movie = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")), Movie.class);

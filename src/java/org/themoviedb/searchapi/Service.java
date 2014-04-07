@@ -16,6 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,6 +40,7 @@ public class Service {
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();
+            conn.setConnectTimeout(Configs.TIME_OUT_MS);
             
             Gson gson = new Gson();
             SearchResults srs = gson.fromJson( new BufferedReader(new InputStreamReader(conn.getInputStream())), SearchResults.class);
@@ -46,11 +49,25 @@ public class Service {
                 org.themoviedb.movieapi.Movie movieInfo = org.themoviedb.movieapi.Service.getMovie(result.getId());
                 
                 org.me.data.search.Movie movie = new  org.me.data.search.Movie();
+                
                 movie.setIMDBId(movieInfo.getImdb_id());
                 movie.setOriginalTitle(movieInfo.getOriginal_title());
                 movie.setTitle(movieInfo.getTitle());
                 movie.setTMDId(new BigInteger(String.valueOf(movieInfo.getId())));
-                movie.setPosterImgUrl(Configs.POSTER_BASE_URL_W185 + movieInfo.getPoster_path());
+                if (movieInfo.getPoster_path() != null && !movieInfo.getPoster_path().equals("")) {
+                    movie.setPosterImgUrl(Configs.POSTER_BASE_URL_W185 + movieInfo.getPoster_path());
+                } else {
+                    movie.setPosterImgUrl(null);
+                }
+                
+                try {
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    movie.setReleaseDate(simpleDateFormat.parse(movieInfo.getRelease_date()));
+                } catch (ParseException ex) {
+                    System.out.println(ex.getMessage());
+                    movie.setReleaseDate(null);
+                }
+                
                 movies.add(movie);
             }
             

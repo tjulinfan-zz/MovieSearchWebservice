@@ -20,4 +20,6 @@ public class Configs {
     public static final String QUERY_LABEL = "query";
     
     public static final String POSTER_BASE_URL_W185 = "http://image.tmdb.org/t/p/w185";
+    
+    public static final int TIME_OUT_MS = 30 * 1000;
 }

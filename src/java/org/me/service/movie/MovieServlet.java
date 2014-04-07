@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.me.service.search;
+package org.me.service.movie;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,18 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import org.me.data.search.ObjectFactory;
-import org.me.data.search.Results;
 
 /**
  *
  * @author LinFan
  */
-@WebServlet(name = "SearchServlet", urlPatterns = {"/Search"})
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "MovieServlet", urlPatterns = {"/Movie"})
+public class MovieServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,21 +35,6 @@ public class SearchServlet extends HttpServlet {
         response.setContentType("application/xml;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ObjectFactory fac = new ObjectFactory();
-            Results results = fac.createResults();
-            String keyword = request.getParameter("q");
-            org.themoviedb.searchapi.Service.getMovies(keyword, results.getMovieItem());
-            
-            try {
-                JAXBContext jc = JAXBContext.newInstance(Results.class);
-                Marshaller m = jc.createMarshaller();
-                m.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "http://xml.netbeans.org/schema/ResultsXmlSchema ResultsXmlSchema.xsd");
-                m.marshal(results, out);
-                        
-            } catch (JAXBException ex) {
-                //Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("JAXBException:  " + ex.getErrorCode());
-            }
         }
     }
 
