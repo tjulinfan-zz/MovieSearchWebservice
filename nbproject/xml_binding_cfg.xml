@@ -20,4 +20,14 @@
 		</bindings>
 		<catalog/>
 	</schema>
+	<schema type='-xmlschema' package='com.trailer.data' name='TrailerAPI'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/TrailerAPI/TrailerapiXmlSchema.xsd' origLocation='src/java/com/trailer/trailerapi/TrailerapiXmlSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
 </schemas>

@@ -39,6 +39,20 @@
         <copy todir="${build.generated.sources.dir}/jaxb">
             <fileset dir="build/generated/jaxbCache/MAFMovieAPI"/>
         </copy>
+        <mkdir dir="build/generated/jaxbCache/TrailerAPI"/>
+        <xjc package="com.trailer.data" destdir="build/generated/jaxbCache/TrailerAPI" catalog="catalog.xml">
+            <classpath>
+                <pathelement location="${src.dir}"/>
+                <pathelement path="${jaxbwiz.xjcrun.classpath}"/>
+            </classpath>
+            <arg value="-xmlschema"/>
+            <schema file="src/conf/xml-resources/jaxb/TrailerAPI/TrailerapiXmlSchema.xsd"/>
+            <depends file="src/conf/xml-resources/jaxb/TrailerAPI/TrailerapiXmlSchema.xsd"/>
+            <produces dir="build/generated/jaxbCache/TrailerAPI"/>
+        </xjc>
+        <copy todir="${build.generated.sources.dir}/jaxb">
+            <fileset dir="build/generated/jaxbCache/TrailerAPI"/>
+        </copy>
         <!--*** Web project javac macro does not support sourcepath attribute, so do not pass "sourcepath=${src.dir}"-->
     </target>
 </project>

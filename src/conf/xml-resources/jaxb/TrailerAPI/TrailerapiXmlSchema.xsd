@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="trailers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="trailer" type="trailer" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="trailer">
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" minOccurs="0" />
+            <xs:element name="link" type="xs:string" minOccurs="0" />
+            <xs:element name="pubDate" type="xs:string" minOccurs="0" />
+            <xs:element name="trailer_id" type="xs:string" minOccurs="0" />
+            <xs:element name="imdb" type="xs:string" minOccurs="0" />
+            <xs:element name="embed" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

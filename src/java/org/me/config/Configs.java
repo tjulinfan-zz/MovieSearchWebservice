@@ -35,6 +35,8 @@ public class Configs {
     
     //-----------------Trailer api configs--------------------------------
     public static final String TRAILER_API_BASE_URL = "http://api.traileraddict.com/";
+    public static final String TRAILER_IMDBID_LABEL = "imdb";
+    public static final String TRAILER_WIDTH_LABEL = "width";
     //--------------------------------------------------------------------
     
            

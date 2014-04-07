@@ -2,4 +2,5 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="file:/E:/WorkSpace/MovieSearchWebsite/src/java/org/me/service/search/ResultsXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/SearchResults/ResultsXmlSchema.xsd"/>
     <system systemId="file:/E:/WorkSpace/MovieSearchWebsite/src/java/com/myapifilms/movieapi/MAFXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/MAFMovieAPI/MAFXmlSchema.xsd"/>
+    <system systemId="file:/E:/WorkSpace/MovieSearchWebsite/src/java/com/trailer/trailerapi/TrailerapiXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/TrailerAPI/TrailerapiXmlSchema.xsd"/>
 </catalog>
