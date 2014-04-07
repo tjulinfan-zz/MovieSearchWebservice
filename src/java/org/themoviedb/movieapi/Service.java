@@ -23,12 +23,12 @@ import org.me.config.Configs;
  */
 public class Service {
 
-    private static final String GET_URL = Configs.API_BASE_URL + "/movie/";
+    private static final String GET_URL = Configs.TMD_API_BASE_URL + "/movie/";
     
     //Getting movie information by using TMDId
     public static Movie getMovie(Integer id) {
         String getUrl = GET_URL + id
-                + "?"+ Configs.API_KEY_LABEL + "=" + Configs.API_KEY_VALUE;
+                + "?"+ Configs.TMD_API_KEY_LABEL + "=" + Configs.TMD_API_KEY_VALUE;
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();

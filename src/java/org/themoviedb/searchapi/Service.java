@@ -29,13 +29,13 @@ import org.me.config.Configs;
  */
 public class Service {
     
-    private static final String GET_URL = Configs.API_BASE_URL + "/search/movie";
+    private static final String GET_URL = Configs.TMD_API_BASE_URL + "/search/movie";
     
     //Searching movies from themoviedb by keyword
     public static void getMovies(String keyword, List<org.me.data.search.Movie> movies) throws UnsupportedEncodingException {
         String getUrl = GET_URL
-                + "?" + Configs.API_KEY_LABEL + "=" + Configs.API_KEY_VALUE 
-                + "&" + Configs.QUERY_LABEL + "=" + URLEncoder.encode(keyword, "utf-8");        
+                + "?" + Configs.TMD_API_KEY_LABEL + "=" + Configs.TMD_API_KEY_VALUE 
+                + "&" + Configs.TMD_QUERY_LABEL + "=" + URLEncoder.encode(keyword, "utf-8");        
         
         try {
             URL getURL = new URL(getUrl);
@@ -55,7 +55,7 @@ public class Service {
                 movie.setTitle(movieInfo.getTitle());
                 movie.setTMDId(new BigInteger(String.valueOf(movieInfo.getId())));
                 if (movieInfo.getPoster_path() != null && !movieInfo.getPoster_path().equals("")) {
-                    movie.setPosterImgUrl(Configs.POSTER_BASE_URL_W185 + movieInfo.getPoster_path());
+                    movie.setPosterImgUrl(Configs.TMD_POSTER_BASE_URL_W185 + movieInfo.getPoster_path());
                 } else {
                     movie.setPosterImgUrl(null);
                 }

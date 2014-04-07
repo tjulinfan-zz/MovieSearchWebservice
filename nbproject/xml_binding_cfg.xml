@@ -10,4 +10,14 @@
 		</bindings>
 		<catalog/>
 	</schema>
+	<schema type='-xmlschema' package='com.myapifilms.data' name='MAFMovieAPI'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/MAFMovieAPI/MAFXmlSchema.xsd' origLocation='src/java/com/myapifilms/movieapi/MAFXmlSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
 </schemas>

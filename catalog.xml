@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="file:/E:/WorkSpace/MovieSearchWebsite/src/java/org/me/service/search/ResultsXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/SearchResults/ResultsXmlSchema.xsd"/>
+    <system systemId="file:/E:/WorkSpace/MovieSearchWebsite/src/java/com/myapifilms/movieapi/MAFXmlSchema.xsd" uri="src/conf/xml-resources/jaxb/MAFMovieAPI/MAFXmlSchema.xsd"/>
 </catalog>

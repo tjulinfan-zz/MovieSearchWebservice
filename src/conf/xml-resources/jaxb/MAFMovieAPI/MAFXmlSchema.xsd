@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    <xs:element name="movie">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="filmingLocations" type="xs:string" minOccurs="0" />
+                <xs:element name="idIMDB" type="xs:string" minOccurs="0" />
+                <xs:element name="metascore" type="xs:string" minOccurs="0" />
+                <xs:element name="plot" type="xs:string" minOccurs="0" />
+                <xs:element name="rated" type="xs:string" minOccurs="0" />
+                <xs:element name="rating" type="xs:string" minOccurs="0" />
+                <xs:element name="releaseDate" type="xs:string" minOccurs="0" />
+                <xs:element name="runtime" type="xs:string" minOccurs="0" />
+                <xs:element name="simplePlot" type="xs:string" minOccurs="0" />
+                <xs:element name="title" type="xs:string" minOccurs="0" />
+                <xs:element name="urlIMDB" type="xs:string" minOccurs="0" />
+                <xs:element name="urlPoster" type="xs:string" minOccurs="0" />
+                <xs:element name="year" type="xs:string" minOccurs="0" />
+                <xs:element name="countries">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="country" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="directors">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="director" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="genres">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="genre" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="languages">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Writers">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Writer" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
