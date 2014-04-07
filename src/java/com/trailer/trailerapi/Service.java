@@ -6,9 +6,10 @@
 
 package com.trailer.trailerapi;
 
-import com.trailer.data.Trailer;
+import com.sun.xml.bind.marshaller.CharacterEscapeHandler;
 import com.trailer.data.Trailers;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import org.me.config.Configs;
 
@@ -41,11 +43,17 @@ public class Service {
             Unmarshaller um = jc.createUnmarshaller();
             Trailers trailers = (Trailers)um.unmarshal(conn.getInputStream());
             
-            List<Trailer> trailerList = trailers.getTrailer();
-            System.out.println(trailerList.size());
-           for (Trailer trailer : trailerList) {
-               System.out.println(trailer.getEmbed());
-           }
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.setProperty(CharacterEscapeHandler.class.getName(),
+                new CharacterEscapeHandler() {
+                    @Override
+                    public void escape(char[] ac, int i, int j, boolean flag,
+                            Writer writer) throws IOException {
+                        writer.write(ac, i, j);
+                    }
+                });
+            m.marshal(trailers, System.out);
         } catch (MalformedURLException ex) {
             Logger.getLogger(com.myapifilms.movieapi.Service.class.getName()).log(Level.SEVERE, "URL Error", ex);
         } catch (IOException ex) {
