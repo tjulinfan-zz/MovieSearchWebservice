@@ -51,7 +51,8 @@ public class SearchServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             ObjectFactory fac = new ObjectFactory();
             Results results = fac.createResults();
-            org.themoviedb.searchapi.Service.getMovies("twilight", results.getMovieItems());
+            String keyword = request.getParameter("q");
+            org.themoviedb.searchapi.Service.getMovies(keyword, results.getMovieItems());
             
             try {
                 JAXBContext jc = JAXBContext.newInstance(Results.class);
