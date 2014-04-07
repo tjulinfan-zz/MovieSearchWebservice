@@ -48,7 +48,7 @@ public class Service {
             for (Result result : results) {
                 org.themoviedb.movieapi.Movie movieInfo = org.themoviedb.movieapi.Service.getMovie(result.getId());
                 
-                org.me.data.search.Movie movie = new  org.me.data.search.Movie();
+                org.me.data.search.Movie movie = new org.me.data.search.Movie();
                 
                 movie.setIMDBId(movieInfo.getImdb_id());
                 movie.setOriginalTitle(movieInfo.getOriginal_title());

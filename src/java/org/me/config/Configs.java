@@ -39,6 +39,13 @@ public class Configs {
     public static final String TRAILER_WIDTH_LABEL = "width";
     //--------------------------------------------------------------------
     
+    //----------------RT api configs-------------------------------------
+    public static final String RT_API_BASE_URL = "http://api.rottentomatoes.com/api/public/v1.0";
+    public static final String RT_API_KEY_LABEL = "apikey";
+    public static final String RT_API_KEY_VALUE = "5chxqkcunky9usnqyj7djm48";
+    public static final String RT_ALIAS_TYPE_LABEL = "type";
+    public static final String RT_ALIAS_TYPE_VALUE = "imdb";
+    public static final String RT_IMDBID_LABEL = "id";
            
     public static final int TIME_OUT_MS = 30 * 1000;
 }

@@ -31,6 +31,10 @@ public class Service {
     private static final String GET_URL = Configs.TRAILER_API_BASE_URL;
 
     public static void getTrailers(String IMDBId) {
+        if (IMDBId.startsWith("tt")) {
+            IMDBId = IMDBId.substring(2);
+        }
+        
         String getUrl = GET_URL
                 + "?" + Configs.TRAILER_IMDBID_LABEL + "=" + IMDBId;
         System.out.println(getUrl);
@@ -69,9 +73,6 @@ public class Service {
      */
     public static void main(String[] args) {
         String IMDBId = "tt0810913";
-        if (IMDBId.startsWith("tt")) {
-            IMDBId = IMDBId.substring(2);
-        }
         getTrailers(IMDBId);
     }
     
