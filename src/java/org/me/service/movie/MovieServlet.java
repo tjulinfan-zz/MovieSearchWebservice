@@ -6,6 +6,7 @@
 package org.me.service.movie;
 
 import com.myapifilms.data.MAFMovie;
+import com.rottentomatoes.movieapi.Abridged_cast;
 import com.rottentomatoes.movieapi.RTMovie;
 import com.rottentomatoes.reviewapi.RTReview;
 import com.sun.xml.bind.marshaller.CharacterEscapeHandler;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import org.me.data.movie.Casts;
 import org.me.data.movie.Countries;
 import org.me.data.movie.Directors;
 import org.me.data.movie.Genres;
@@ -120,8 +122,14 @@ public class MovieServlet extends HttpServlet {
         if (rtMovie != null) {
             movie.setYear(BigInteger.valueOf(rtMovie.getYear()));
             movie.setCriticsConsensus(rtMovie.getCritics_consensus());
-
+            List<Abridged_cast> rtCasts = rtMovie.getAbridged_cast();
             ObjectFactory fac = new ObjectFactory();
+            Casts casts = fac.createCasts();
+            for (Abridged_cast ac : rtCasts) {
+                casts.getCast().add(ac.getName());
+            }
+            movie.setCasts(casts);
+            
             Reviews reviews = fac.createReviews();
             List<RTReview> rtReviews = com.rottentomatoes.reviewapi.Service.getReviews(rtMovie.getLinks().getReviews());
             for (RTReview rtReview : rtReviews) {
