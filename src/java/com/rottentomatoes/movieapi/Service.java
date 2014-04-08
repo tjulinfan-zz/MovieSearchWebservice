@@ -35,7 +35,7 @@ public class Service {
                 + "?"+ Configs.RT_API_KEY_LABEL + "=" + Configs.RT_API_KEY_VALUE
                 + "&" + Configs.RT_ALIAS_TYPE_LABEL + "=" + Configs.RT_ALIAS_TYPE_VALUE
                 + "&" + Configs.RT_IMDBID_LABEL + "=" + IMDBId;
-        System.out.println(getUrl);
+        
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();

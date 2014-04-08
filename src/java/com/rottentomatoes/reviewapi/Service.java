@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.themoviedb.movieapi;
+package com.rottentomatoes.reviewapi;
 
 import com.google.gson.Gson;
 import java.io.BufferedReader;
@@ -23,35 +23,32 @@ import org.me.config.Configs;
  */
 public class Service {
 
-    private static final String GET_URL = Configs.TMD_API_BASE_URL + "/movie/";
-    
-    //Getting movie information by using TMDId
-    public static TMDMovie getMovie(Integer id) {
-        String getUrl = GET_URL + id
-                + "?"+ Configs.TMD_API_KEY_LABEL + "=" + Configs.TMD_API_KEY_VALUE;
+    //Getting reviews by RT's URL
+    public static void getReviews(String reviewsUrl) {
+        String getUrl = reviewsUrl
+                + "?" + Configs.RT_API_KEY_LABEL + "=" + Configs.RT_API_KEY_VALUE;
+        
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();
             conn.setConnectTimeout(Configs.TIME_OUT_MS);
             
             Gson gson = new Gson();
-            TMDMovie movie = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")), TMDMovie.class);
-            return movie;
+            ReviewResults rrs = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")), ReviewResults.class);
+            System.out.println(rrs.getReviews().get(0).getQuote());
         } catch (MalformedURLException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "URL invalid", ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "URL Error", ex);
         } catch (IOException ex) {
-            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "Server Error", ex);
+            Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "Connection Error", ex);
         }
-        return null;
     }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Integer testTMDId = 550;
-        TMDMovie m = getMovie(testTMDId);
-        System.out.println(m.getImdb_id());
+        String url = "http://api.rottentomatoes.com/api/public/v1.0/movies/770672122/reviews.json";
+        getReviews(url);
     }
     
 }

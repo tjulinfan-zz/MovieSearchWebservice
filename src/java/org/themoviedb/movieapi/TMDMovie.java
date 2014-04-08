@@ -7,7 +7,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 
 @Generated("org.jsonschema2pojo")
-public class Movie {
+public class TMDMovie {
 
     @Expose
     private Boolean adult;

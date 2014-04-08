@@ -30,4 +30,14 @@
 		</bindings>
 		<catalog/>
 	</schema>
+	<schema type='-xmlschema' package='org.me.data.movie' name='MovieServlet'>
+		<xjc-options>
+		</xjc-options>
+		<schema-sources>
+			<schema-source location='src/conf/xml-resources/jaxb/MovieServlet/MovieXmlSchema.xsd' origLocation='src/java/org/me/service/movie/MovieXmlSchema.xsd'/>
+		</schema-sources>
+		<bindings>
+		</bindings>
+		<catalog/>
+	</schema>
 </schemas>

@@ -46,7 +46,7 @@ public class Service {
             SearchResults srs = gson.fromJson( new BufferedReader(new InputStreamReader(conn.getInputStream())), SearchResults.class);
             List<Result> results = srs.getResults();
             for (Result result : results) {
-                org.themoviedb.movieapi.Movie movieInfo = org.themoviedb.movieapi.Service.getMovie(result.getId());
+                org.themoviedb.movieapi.TMDMovie movieInfo = org.themoviedb.movieapi.Service.getMovie(result.getId());
                 
                 org.me.data.search.Movie movie = new org.me.data.search.Movie();
                 
