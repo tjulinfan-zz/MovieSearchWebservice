@@ -12,7 +12,7 @@ public class ReviewResults {
     @Expose
     private Integer total;
     @Expose
-    private List<Review> reviews = new ArrayList<Review>();
+    private List<RTReview> reviews = new ArrayList<RTReview>();
     @Expose
     private Links_ links;
     @Expose
@@ -26,11 +26,11 @@ public class ReviewResults {
         this.total = total;
     }
 
-    public List<Review> getReviews() {
+    public List<RTReview> getReviews() {
         return reviews;
     }
 
-    public void setReviews(List<Review> reviews) {
+    public void setReviews(List<RTReview> reviews) {
         this.reviews = reviews;
     }
 

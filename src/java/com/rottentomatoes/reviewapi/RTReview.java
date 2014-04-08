@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 
 @Generated("org.jsonschema2pojo")
-public class Review {
+public class RTReview {
 
     @Expose
     private String critic;

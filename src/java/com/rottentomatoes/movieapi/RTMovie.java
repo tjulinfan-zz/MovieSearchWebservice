@@ -20,7 +20,7 @@ public class RTMovie {
     @Expose
     private String mpaa_rating;
     @Expose
-    private Integer runtime;
+    private String runtime;
     @Expose
     private String critics_consensus;
     @Expose
@@ -84,11 +84,11 @@ public class RTMovie {
         this.mpaa_rating = mpaa_rating;
     }
 
-    public Integer getRuntime() {
+    public String getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(Integer runtime) {
+    public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
 

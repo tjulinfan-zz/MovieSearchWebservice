@@ -29,6 +29,7 @@ public class Service {
     public static TMDMovie getMovie(Integer id) {
         String getUrl = GET_URL + id
                 + "?"+ Configs.TMD_API_KEY_LABEL + "=" + Configs.TMD_API_KEY_VALUE;
+        System.out.println(getUrl);
         try {
             URL getURL = new URL(getUrl);
             URLConnection conn = getURL.openConnection();

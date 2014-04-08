@@ -6,6 +6,7 @@
 
 package com.myapifilms.movieapi;
 
+import com.myapifilms.data.MAFMovie;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,7 +27,7 @@ public class Service {
     private static final String GET_URL = Configs.MAF_API_BASE_URL;
     private static final String MAF_FORMAT_VALUE = "XML";
     
-    public static void getMovie(String IMDBId) {
+    public static MAFMovie getMovie(String IMDBId) {
         String getUrl = GET_URL
                 + "?" + Configs.MAF_IMDBID_LABEL + "=" + IMDBId
                 + "&" + Configs.MAF_FORMAT_LABEL + "=" + MAF_FORMAT_VALUE;
@@ -36,11 +37,11 @@ public class Service {
             URLConnection conn = getURL.openConnection();
             conn.setConnectTimeout(Configs.TIME_OUT_MS);
             
-            JAXBContext jc = JAXBContext.newInstance(com.myapifilms.data.Movie.class);
+            JAXBContext jc = JAXBContext.newInstance(com.myapifilms.data.MAFMovie.class);
             Unmarshaller um = jc.createUnmarshaller();
-            com.myapifilms.data.Movie movie = (com.myapifilms.data.Movie)um.unmarshal(conn.getInputStream());
+            com.myapifilms.data.MAFMovie movie = (com.myapifilms.data.MAFMovie)um.unmarshal(conn.getInputStream());
             
-            System.out.println(movie.getTitle());
+            return movie;
         } catch (MalformedURLException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, "URL Error", ex);
         } catch (IOException ex) {
@@ -48,7 +49,7 @@ public class Service {
         } catch (JAXBException ex) {
             System.out.println("JAXBException:  " + ex.getMessage());
         }
-        
+        return null;
     }
     
     public static void main(String[] args) {

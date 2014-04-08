@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.me.service.search;
+package org.me.config;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

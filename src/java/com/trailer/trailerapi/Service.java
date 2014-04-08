@@ -7,12 +7,14 @@
 package com.trailer.trailerapi;
 
 import com.sun.xml.bind.marshaller.CharacterEscapeHandler;
-import com.trailer.data.Trailers;
+import com.trailer.data.TATrailer;
+import com.trailer.data.TATrailers;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +32,7 @@ public class Service {
     
     private static final String GET_URL = Configs.TRAILER_API_BASE_URL;
 
-    public static void getTrailers(String IMDBId) {
+    public static List<TATrailer> getTrailers(String IMDBId) {
         if (IMDBId.startsWith("tt")) {
             IMDBId = IMDBId.substring(2);
         }
@@ -43,21 +45,22 @@ public class Service {
             URLConnection conn = getURL.openConnection();
             conn.setConnectTimeout(Configs.TIME_OUT_MS);
             
-            JAXBContext jc = JAXBContext.newInstance(com.trailer.data.Trailers.class);
+            JAXBContext jc = JAXBContext.newInstance(com.trailer.data.TATrailers.class);
             Unmarshaller um = jc.createUnmarshaller();
-            Trailers trailers = (Trailers)um.unmarshal(conn.getInputStream());
-            
-            Marshaller m = jc.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.setProperty(CharacterEscapeHandler.class.getName(),
-                new CharacterEscapeHandler() {
-                    @Override
-                    public void escape(char[] ac, int i, int j, boolean flag,
-                            Writer writer) throws IOException {
-                        writer.write(ac, i, j);
-                    }
-                });
-            m.marshal(trailers, System.out);
+            TATrailers trailers = (TATrailers)um.unmarshal(conn.getInputStream());
+   
+            return trailers.getTrailer();
+//            Marshaller m = jc.createMarshaller();
+//            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//            m.setProperty(CharacterEscapeHandler.class.getName(),
+//                new CharacterEscapeHandler() {
+//                    @Override
+//                    public void escape(char[] ac, int i, int j, boolean flag,
+//                            Writer writer) throws IOException {
+//                        writer.write(ac, i, j);
+//                    }
+//                });
+//            m.marshal(trailers, System.out);
         } catch (MalformedURLException ex) {
             Logger.getLogger(com.myapifilms.movieapi.Service.class.getName()).log(Level.SEVERE, "URL Error", ex);
         } catch (IOException ex) {
@@ -65,15 +68,16 @@ public class Service {
         } catch (JAXBException ex) {
             System.out.println("JAXBException:  " + ex.getMessage());
         }
-        
+        return new ArrayList();
     }
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String IMDBId = "tt0810913";
-        getTrailers(IMDBId);
+        String IMDBId = "tt0137523";
+        List<TATrailer> ts = getTrailers(IMDBId);
+        System.out.println(ts.size());
     }
     
 }

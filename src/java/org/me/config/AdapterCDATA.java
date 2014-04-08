@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.trailer.trailerapi;
+package org.me.config;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

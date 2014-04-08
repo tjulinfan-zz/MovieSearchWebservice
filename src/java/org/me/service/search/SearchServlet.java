@@ -48,7 +48,7 @@ public class SearchServlet extends HttpServlet {
             try {
                 JAXBContext jc = JAXBContext.newInstance(Results.class);
                 Marshaller m = jc.createMarshaller();
-                m.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "http://xml.netbeans.org/schema/ResultsXmlSchema ResultsXmlSchema.xsd");
+                m.setProperty(Marshaller.JAXB_SCHEMA_LOCATION, "http://assignment.lf.org/searchapi ResultsXmlSchema.xsd");
                 m.marshal(results, out);
                         
             } catch (JAXBException ex) {

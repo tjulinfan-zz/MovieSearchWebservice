@@ -27,7 +27,7 @@ public class Service {
     private static final String GET_URL = Configs.RT_API_BASE_URL + "/movie_alias.json";
     
     //Getting movie information by using IMDDId
-    public static void getMovie(String IMDBId) {
+    public static RTMovie getMovie(String IMDBId) {
         if (IMDBId.startsWith("tt")) {
             IMDBId = IMDBId.substring(2);
         }
@@ -43,12 +43,13 @@ public class Service {
             
             Gson gson = new Gson();
             RTMovie movie = gson.fromJson(new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8")), RTMovie.class);
-            System.out.println(movie.getTitle());
+            return movie;
         } catch (MalformedURLException ex) {
             Logger.getLogger(org.themoviedb.movieapi.Service.class.getName()).log(Level.SEVERE, "URL invalid", ex);
         } catch (IOException ex) {
             Logger.getLogger(org.themoviedb.movieapi.Service.class.getName()).log(Level.SEVERE, "Server Error", ex);
         }
+        return null;
     }
     
     /**
