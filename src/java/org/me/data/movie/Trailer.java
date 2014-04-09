@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "trailer", propOrder = {
+    "trailerId",
     "title",
     "link",
     "pubDate",
@@ -46,12 +47,22 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 })
 public class Trailer {
 
+    protected String trailerId;
     protected String title;
     protected String link;
     protected String pubDate;
     @XmlJavaTypeAdapter(org.me.config.AdapterCDATA.class)
     protected String embed;
 
+    public String getTrailerId() {
+        return trailerId;
+    }
+
+    public void setTrailerId(String trailerId) {
+        this.trailerId = trailerId;
+    }
+
+    
     /**
      * ��ȡtitle���Ե�ֵ��
      * 

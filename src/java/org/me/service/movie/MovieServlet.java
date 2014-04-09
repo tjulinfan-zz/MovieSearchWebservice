@@ -150,9 +150,11 @@ public class MovieServlet extends HttpServlet {
         List<TATrailer> taTrailers = com.trailer.trailerapi.Service.getTrailers(movie.getIMDBId());
         for (TATrailer taTrailer : taTrailers) {
             Trailer trailer = fac.createTrailer();
+            trailer.setTrailerId(taTrailer.getTrailerId());
             trailer.setTitle(taTrailer.getTitle());
             trailer.setLink(taTrailer.getLink());
             trailer.setEmbed(taTrailer.getEmbed());
+            trailer.setPubDate(taTrailer.getPubDate());
             trailers.getTrailer().add(trailer);
         }
         movie.setTrailers(trailers);
